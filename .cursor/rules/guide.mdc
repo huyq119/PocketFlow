@@ -1,11 +1,11 @@
 ---
-layout: default
-title: "Agentic Coding"
+description: Guidelines for using PocketFlow, Agentic Coding
+globs: **/*.py
+alwaysApply: true
 ---
-
 # Agentic Coding: Humans Design, Agents code!
 
-> If you are an AI agent involved in building LLM Systems, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
+> If you are an AI agents involved in building LLM Systems, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
 {: .warning }
 
 ## Agentic Coding Steps
@@ -31,7 +31,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
     - **Balance complexity vs. impact**: Aim to deliver the highest value features with minimal complexity early.
 
 2. **Flow Design**: Outline at a high level, describe how your AI system orchestrates nodes.
-    - Identify applicable design patterns (e.g., [Map Reduce](./design_pattern/mapreduce.md), [Agent](./design_pattern/agent.md), [RAG](./design_pattern/rag.md)).
+    - Identify applicable design patterns (e.g., [Map Reduce], [Agent], [RAG]).
       - For each node in the flow, start with a high-level one-line description of what it does.
       - If using **Map Reduce**, specify how to map (what to split) and how to reduce (how to combine).
       - If using **Agent**, specify what are the inputs (context) and what are the possible actions.
@@ -56,7 +56,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
 
 3. **Utilities**: Based on the Flow Design, identify and implement necessary utility functions.
     - Think of your AI system as the brain. It needs a body—these *external utility functions*—to interact with the real world:
-        <div align="center"><img src="https://github.com/the-pocket/.github/raw/main/assets/utility.png?raw=true" width="400"/></div>
+        
 
         - Reading inputs (e.g., retrieving Slack messages, reading emails)
         - Writing outputs (e.g., generating reports, sending emails)
@@ -89,7 +89,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
       {: .best-practice }
 
 4. **Node Design**: Plan how each node will read and write data, and use utility functions.
-   - One core design principle for PocketFlow is to use a [shared store](./core_abstraction/communication.md), so start with a shared store design:
+   - One core design principle for PocketFlow is to use a [shared store], so start with a shared store design:
       - For simple systems, use an in-memory dictionary.
       - For more complex systems or when persistence is required, use a database.
       - **Don't Repeat Yourself**: Use in-memory references or foreign keys.
@@ -106,7 +106,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
             "results": {}                   # Empty dict to store outputs
         }
         ```
-   - For each [Node](./core_abstraction/node.md), describe its type, how it reads and writes data, and which utility function it uses. Keep it specific but high-level without codes. For example:
+   - For each [Node], describe its type, how it reads and writes data, and which utility function it uses. Keep it specific but high-level without codes. For example:
      - `type`: Regular (or Batch, or Async)
      - `prep`: Read "text" from the shared store
      - `exec`: Call the embedding utility function
@@ -127,7 +127,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
 
    - > **You'll likely iterate a lot!** Expect to repeat Steps 3–6 hundreds of times.
      >
-     > <div align="center"><img src="https://github.com/the-pocket/.github/raw/main/assets/success.png?raw=true" width="400"/></div>
+     > 
      {: .best-practice }
 
 8. **Reliability**  

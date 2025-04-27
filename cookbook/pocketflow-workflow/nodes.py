@@ -1,3 +1,4 @@
+import re
 from pocketflow import Node, BatchNode
 from utils import call_llm
 import yaml
@@ -15,9 +16,12 @@ Output the sections in YAML format as shown below:
 
 ```yaml
 sections:
-    - First section 
-    - Second section
-    - Third section
+    - |
+        First section 
+    - |
+        Second section
+    - |
+        Third section
 ```"""
         response = call_llm(prompt)
         yaml_str = response.split("```yaml")[1].split("```")[0].strip()
